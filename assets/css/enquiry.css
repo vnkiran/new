@@ -1,0 +1,262 @@
+
+html,body{
+  color: #6e6b7b;
+}
+a{
+  text-decoration: none;
+}
+.h-full{
+  height: 100vh;
+}
+.auth-wrapper{
+  background: #f8f8f8;
+  height: 100vh;
+  overflow: hidden;
+}
+html[dir=ltr] body {
+  text-align: left;
+  direction: ltr;
+}
+.white-bg{
+  background: #fff;
+}
+h1,h2,h3,h4,h5,h6{
+  color: #475f7b;
+}
+/*
+*@Created on : OCT 03, 2021
+*@Author     : jamalla Karteek
+*@Form Styles
+*/
+.errors{
+  font-size: 12px;
+  color: red;
+  display: none;
+}
+.input-required{
+  font-size: 0.4rem;
+  color: red;
+  position: relative;
+  top: -5px;
+}
+html[dir=ltr] .input-required{
+  margin-left: 5px
+}
+.inline-form label {
+  color: #475f7b;
+  font-size: .8rem;
+  font-weight: 500;
+}
+.label__uppercase label{
+  text-transform: uppercase;
+}
+.label__uppercase label.label__text_default{
+  text-transform: initial;
+}
+.inline-form select,.inline-form .form-control,.inline-form .select2-container--default .select2-selection--single{
+  display: block;
+  width: 100%;
+  padding: .47rem .8rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.4;
+  color: #475f7b;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #dfe3e7;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  border-radius: 0;
+}
+
+.inline-form select,.inline-form input.form-control,.inline-form .select2-container--default .select2-selection--single,.inline-form .select2-selection__arrow{
+  height: calc(1.4em + .94rem + 3.7px) !important;
+}
+.inline-form select:hover,.inline-form .form-control:hover,
+.inline-form select:focus,.inline-form .form-control:focus,
+.inline-form select:active,.inline-form .form-control:active{
+  outline: none !important;
+}
+.btn_submit{
+  background-image: linear-gradient(to right, #4c217e, #512387, #572590, #5c289a, #622aa3);
+  color: #fff;
+  text-transform: uppercase;
+  /* padding: 0.4rem 1rem; */
+  border: none;
+  border-radius: 3px;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+html[dir=ltr] .btn_submit svg{
+  margin-left: 5px;
+}
+.inline-form textarea{
+  resize:none;
+}
+.password_warp{
+  position: relative;
+}
+html[dir=ltr] .password_warp input{
+  padding-right: 1.8rem;
+}
+.password-group-append{
+  position: absolute;
+  top: 9px;
+  cursor: pointer;
+}
+html[dir=ltr] .password-group-append{
+  right: 7px;
+}
+/*
+*Auth Styles 
+*/
+.auth-inner-form h1{
+  font-size: 1.5rem;
+}
+.auth-inner-form p{
+  color: #536e92;
+  font-size: 0.9rem;
+}
+.auth-inner-warp{
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+/*
+*Enquiry form (Login/Registration)
+*/
+.ftco_enquiry_btn{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  position: fixed;
+  bottom: 1rem;
+  background-image: linear-gradient(to right, #4c217e, #512387, #572590, #5c289a, #622aa3);
+  cursor: pointer;
+  color: #fff;
+  text-align: center;
+  z-index: 10;
+  transition: all .5s;
+}
+.ftco_enquiry_btn:hover{
+  background-image: linear-gradient(to right, #622aa3, #4c217e, #5c289a, #572590, #512387);
+  opacity: 0.9;
+}
+html[dir=ltr] .ftco_enquiry_btn{
+  left: 1rem;
+}
+.ftco_enquiry_btn .ftco_enq_phone{
+  font-size: 1.4rem;
+  position: absolute;
+  right: 18px;
+  top: 14px;
+  transform: rotate(90deg);
+  font-weight: 600;
+}
+.ftco_enq_comment{
+  position: absolute;
+  right: 11px;
+  top: 5px;
+  font-weight: 600;
+}
+.ftco_enquiry_warp{
+  /* min-height: 320px; */
+  width:350px;
+  position: fixed;
+  bottom: 0.5rem;
+  display: none;
+  z-index: 10;
+  /* 15-11-2021 */
+  overflow: auto;
+  height: 87vh;
+  /* 15-11-2021 */
+} 
+html[dir=ltr] .ftco_enquiry_warp{
+  left: 1rem;
+}
+html .ftco_enquiry_warp{
+z-index: 100;
+}
+.ftco_enquiry_header{
+  min-height: 200px;
+  background-image: linear-gradient(to right, #4c217e, #512387, #572590, #5c289a, #622aa3);
+  position: relative;
+  z-index: 88;
+  border-top-right-radius: 0 !important;
+  border-top-left-radius: 0!important;
+}
+.ftco_enquiry_header h3,.ftco_enquiry_header p{
+  color:#fff;
+}
+.ftco_enquiry_header h3{
+  font-size: 1.3rem;
+}
+.ftco_enquiry_header p{
+  font-size: 0.8rem;
+}
+.ftco_enquiry_warp,.ftco_enquiry_header,.ftco_enquiry_body_inner{
+  border-radius: 5px;
+}
+.ftco_enquiry_body,.ftco_enquiry_header,.ftco_enquiry_body_inner{
+  padding: 1rem 1.5rem;
+}
+.ftco_enquiry_warp,.ftco_enquiry_body_inner{
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  background: #fff;
+}
+.ftco_enquiry_body_inner{
+      margin-top: -6rem;
+      position: relative;
+      z-index: 99;
+}
+.ftco_enquiry_form .form-control,.ftco_enquiry_form .select2-container--default .select2-selection--single .select2-selection__rendered,.ftco_enquiry_form  .select2-results__option{
+  font-size: 0.8rem;
+}
+.ftco_enquiry_close{
+  position: absolute;
+  top: 0.5rem;
+  
+  color: #fff;
+  cursor: pointer;
+}
+html[dir=ltr] .ftco_enquiry_close{
+  right: 1rem;
+}
+.up_doc_col{
+      background: rgb(199 212 218 / 15%);
+  padding: 10px;
+}
+#ftco_enquiry_form .select2-container{
+  width:100% !important;
+}
+#ftco_enquiry_form .form-control,#ftco_enquiry_form .select2-container--default .select2-selection--single .select2-selection__rendered{
+  font-size: 13px;
+}
+#ftco_enquiry_form .select2-container--default .select2-results__option--highlighted[aria-selected]{
+  font-size: 13px;
+}
+#resend-otp-warp span{
+      text-decoration: underline;
+  text-decoration-color: #0095d9;
+  cursor: pointer;
+  color: #0095d9;
+      font-weight: normal;
+  font-size: 13px;
+}
+#resend-otp-result{
+  display: none;
+}
+#resend-otp-result span{
+  font-size: 11px;
+  color: red;
+}
+._form__hint{
+  font-size: 0.6rem !important;
+  line-height: 0.85rem;
+  margin-top: 0.4rem;
+  color: #607d8b !important;
+}
+@media(max-width:400px){
+  .ftco_enquiry_warp{
+      width: 300px;
+  }
+}

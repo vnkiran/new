@@ -1,0 +1,739 @@
+
+/* -------------------------------- 
+
+Main Components 
+
+-------------------------------- */
+
+.cd-pricing-container {
+  width: 100%;
+}
+.cd-pricing-switcher-container{
+  position: relative;
+  padding-top: 12%;
+}
+.cd-pricing-switcher {
+  text-align: left;
+    margin-bottom: 35px;
+    position: absolute;
+    z-index: 2;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.cd-pricing-switcher .fieldset {
+    /* display: flex;
+    position: relative;
+    border: 2px solid #ddd;
+    background-color: #fff;
+    margin-bottom: 0;
+    border-radius: 30px;
+    padding: 0 1%; */
+    display: flex;
+    position: relative;
+    background-color: #fff;
+    box-shadow: 0 0 1px 0 rgba(24, 94, 224, 0.15), 0 6px 12px 0 rgba(24, 94, 224, 0.15);
+    padding: 0.75rem;
+    border-radius: 99px;
+    z-index: 2;
+}
+.cd-pricing-switcher input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  display: none;
+}
+.cd-pricing-switcher label {
+    /* padding: 0 9px;
+    font-family: "Work Sans",sans-serif;
+    position: relative;
+    z-index: 1;
+    display: flex;
+	align-items: center;
+	justify-content: center;
+    width: 250px;
+    height: 49px;
+    line-height: 49px;
+    cursor: pointer;
+    font-size: 12px;
+    color: #8495a7;
+    text-transform: uppercase;
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: 0;
+    margin: 0; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 54px;
+    width: 250px ;
+    font-size: 1.25rem;
+    font-weight: 500;
+    border-radius: 99px;
+    cursor: pointer;
+    transition: color 0.15s ease-in;
+    z-index: 2;
+    margin-bottom: 0;
+}
+.cd-pricing-switcher .cd-switch {
+    /* position: absolute;
+    top: 2px;
+    left: 0;
+    height: 45px;
+    width: 240px;
+    background-color: #623694;
+    font-family: "Work Sans",sans-serif;
+    color: #fff;
+    border-radius: 30px;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0;
+    -webkit-transition: -webkit-all 0.5s;
+    -moz-transition: -moz-all 0.5s;
+    transition: all 0.5s; */
+    position: absolute;
+    display: flex;
+    height: 54px;
+    width: 250px !important;
+    background-color: #623694 !important;
+    z-index: 1;
+    border-radius: 99px;
+    transition: 0.25s ease-out;
+}
+@media (max-width: 700px) {
+  .cd-pricing-switcher .fieldset {
+    transform: scale(0.6);
+  }
+}
+.cd-switch.ornage{
+    background-color: #ff9933;
+}
+.cd-pricing-switcher input[type="radio"]:checked + label{
+    color: #fff;
+}
+.cd-pricing-switcher input[type="radio"]:checked + label + .cd-switch,
+.cd-pricing-switcher input[type="radio"]:checked + label:nth-of-type(n) + .cd-switch {
+    /* use label:nth-of-type(n) to fix a bug on safari with multiple adjacent-sibling selectors*/
+    -webkit-transform: translateX(140px);
+    -moz-transform: translateX(140px);
+    -ms-transform: translateX(140px);
+    -o-transform: translateX(140px);
+    /* transform: translateX(140px); */
+    transform: translateX(100%);
+}
+
+.no-js .cd-pricing-switcher {
+    display: none;
+}
+
+.cd-pricing-list {}
+.cd-pricing-list > li {
+    position: relative;
+    margin-bottom: 2em;
+    margin-top: 2rem;
+}
+@media only screen and (min-width: 768px) {
+  .cd-pricing-list {}
+  .cd-pricing-list:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  .cd-pricing-list > li {
+    width: 50%;
+    float: left;
+    margin-bottom: 2%;
+  }
+ 
+  .cd-has-margins .cd-pricing-list > li {
+    width: 32.3333333333%;
+    float: left;
+    margin-right: 1.5%;
+  }
+  .cd-has-margins .cd-pricing-list > li:last-of-type {
+    margin-right: 0;
+  }
+}
+/* @media (max-width:768px) {
+  .cd-pricing-list > li.tranlt, .cd-pricing-list > li{
+    transform: translateY(0) !important;
+  }
+} */
+.cd-pricing-wrapper {
+    /* this is the item that rotates */
+    position: relative;
+    margin: 0;
+    height: 100%;
+}
+.touch .cd-pricing-wrapper {
+    /* fix a bug on IOS8 - rotating elements dissapear*/
+    -webkit-perspective: 2000px;
+    -moz-perspective: 2000px;
+    perspective: 2000px;
+}
+.cd-pricing-wrapper.is-switched .is-visible {
+    /* totate the tables - anticlockwise rotation */
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+    -webkit-animation: cd-rotate 0.5s;
+    -moz-animation: cd-rotate 0.5s;
+    animation: cd-rotate 0.5s;
+}
+.cd-pricing-wrapper.is-switched .is-hidden {
+    /* totate the tables - anticlockwise rotation */
+    -webkit-transform: rotateY(0);
+    -moz-transform: rotateY(0);
+    -ms-transform: rotateY(0);
+    -o-transform: rotateY(0);
+    transform: rotateY(0);
+    -webkit-animation: cd-rotate-inverse 0.5s;
+    -moz-animation: cd-rotate-inverse 0.5s;
+    animation: cd-rotate-inverse 0.5s;
+    opacity: 0;
+}
+.cd-pricing-wrapper.is-switched .is-selected {
+  opacity: 1;
+}
+.cd-pricing-wrapper.is-switched.reverse-animation .is-visible {
+    /* invert rotation direction - clockwise rotation */
+    -webkit-transform: rotateY(-180deg);
+    -moz-transform: rotateY(-180deg);
+    -ms-transform: rotateY(-180deg);
+    -o-transform: rotateY(-180deg);
+    transform: rotateY(-180deg);
+    -webkit-animation: cd-rotate-back 0.5s;
+    -moz-animation: cd-rotate-back 0.5s;
+    animation: cd-rotate-back 0.5s;
+}
+.cd-pricing-wrapper.is-switched.reverse-animation .is-hidden {
+    /* invert rotation direction - clockwise rotation */
+    -webkit-transform: rotateY(0);
+    -moz-transform: rotateY(0);
+    -ms-transform: rotateY(0);
+    -o-transform: rotateY(0);
+    transform: rotateY(0);
+    -webkit-animation: cd-rotate-inverse-back 0.5s;
+    -moz-animation: cd-rotate-inverse-back 0.5s;
+    animation: cd-rotate-inverse-back 0.5s;
+    opacity: 0;
+}
+.cd-pricing-wrapper.is-switched.reverse-animation .is-selected {
+    opacity: 1;
+}
+.cd-pricing-wrapper > li {
+    background-color: #FFFFFF;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    /* Firefox bug - 3D CSS transform, jagged edges */
+    outline: 1px solid transparent;
+    height: 100%;
+}
+.cd-pricing-wrapper > li::after {
+    /* subtle gradient layer on the right - to indicate it's possible to scroll */
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 50px;
+    pointer-events: none;
+}
+.cd-pricing-wrapper > li.is-ended::after {
+    /* class added in jQuery - remove the gradient layer when it's no longer possible to scroll */
+    display: none;
+}
+.cd-pricing-wrapper .is-visible {
+    /* the front item, visible by default */
+    position: relative;
+    z-index: 5;
+}
+.cd-pricing-wrapper .is-hidden {
+    /* the hidden items, right behind the front one */
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+.cd-pricing-wrapper .is-selected {
+    /* the next item that will be visible */
+    z-index: 3 !important;
+}
+@media only screen and (min-width: 768px) {
+}
+:nth-of-type(1) > .cd-pricing-wrapper > li::before {
+    /* hide table separator for the first table */
+    display: none;
+  }
+.cd-has-margins .cd-pricing-wrapper > li {
+    border-radius: 4px 4px 6px 6px;
+  }
+.cd-has-margins .cd-pricing-wrapper > li::before {
+    display: none;
+  }
+}
+@media only screen and (min-width: 1500px) {
+  .cd-full-width .cd-pricing-wrapper > li {
+    padding: 2.5em 0;
+  }
+}
+
+.no-js .cd-pricing-wrapper .is-hidden {
+    position: relative;
+    -webkit-transform: rotateY(0);
+    -moz-transform: rotateY(0);
+    -ms-transform: rotateY(0);
+    -o-transform: rotateY(0);
+    transform: rotateY(0);
+    margin-top: 1em;
+}
+
+.is-switched .cd-pricing-body {
+    /* fix a bug on Chrome Android */
+    overflow: hidden;
+}
+/* -------------------------------- 
+
+xkeyframes 
+
+-------------------------------- */
+@-webkit-keyframes cd-rotate {
+  0% {
+    -webkit-transform: perspective(2000px) rotateY(0);
+  }
+  70% {
+    /* this creates the bounce effect */
+    -webkit-transform: perspective(2000px) rotateY(200deg);
+  }
+  100% {
+    -webkit-transform: perspective(2000px) rotateY(180deg);
+  }
+}
+@-moz-keyframes cd-rotate {
+  0% {
+    -moz-transform: perspective(2000px) rotateY(0);
+  }
+  70% {
+    /* this creates the bounce effect */
+    -moz-transform: perspective(2000px) rotateY(200deg);
+  }
+  100% {
+    -moz-transform: perspective(2000px) rotateY(180deg);
+  }
+}
+@keyframes cd-rotate {
+  0% {
+    -webkit-transform: perspective(2000px) rotateY(0);
+    -moz-transform: perspective(2000px) rotateY(0);
+    -ms-transform: perspective(2000px) rotateY(0);
+    -o-transform: perspective(2000px) rotateY(0);
+    transform: perspective(2000px) rotateY(0);
+  }
+  70% {
+    /* this creates the bounce effect */
+    -webkit-transform: perspective(2000px) rotateY(200deg);
+    -moz-transform: perspective(2000px) rotateY(200deg);
+    -ms-transform: perspective(2000px) rotateY(200deg);
+    -o-transform: perspective(2000px) rotateY(200deg);
+    transform: perspective(2000px) rotateY(200deg);
+  }
+  100% {
+    -webkit-transform: perspective(2000px) rotateY(180deg);
+    -moz-transform: perspective(2000px) rotateY(180deg);
+    -ms-transform: perspective(2000px) rotateY(180deg);
+    -o-transform: perspective(2000px) rotateY(180deg);
+    transform: perspective(2000px) rotateY(180deg);
+  }
+}
+@-webkit-keyframes cd-rotate-inverse {
+  0% {
+    -webkit-transform: perspective(2000px) rotateY(-180deg);
+  }
+  70% {
+    /* this creates the bounce effect */
+    -webkit-transform: perspective(2000px) rotateY(20deg);
+  }
+  100% {
+    -webkit-transform: perspective(2000px) rotateY(0);
+  }
+}
+@-moz-keyframes cd-rotate-inverse {
+  0% {
+    -moz-transform: perspective(2000px) rotateY(-180deg);
+  }
+  70% {
+    /* this creates the bounce effect */
+    -moz-transform: perspective(2000px) rotateY(20deg);
+  }
+  100% {
+    -moz-transform: perspective(2000px) rotateY(0);
+  }
+}
+@keyframes cd-rotate-inverse {
+  0% {
+    -webkit-transform: perspective(2000px) rotateY(-180deg);
+    -moz-transform: perspective(2000px) rotateY(-180deg);
+    -ms-transform: perspective(2000px) rotateY(-180deg);
+    -o-transform: perspective(2000px) rotateY(-180deg);
+    transform: perspective(2000px) rotateY(-180deg);
+  }
+  70% {
+    /* this creates the bounce effect */
+    -webkit-transform: perspective(2000px) rotateY(20deg);
+    -moz-transform: perspective(2000px) rotateY(20deg);
+    -ms-transform: perspective(2000px) rotateY(20deg);
+    -o-transform: perspective(2000px) rotateY(20deg);
+    transform: perspective(2000px) rotateY(20deg);
+  }
+  100% {
+    -webkit-transform: perspective(2000px) rotateY(0);
+    -moz-transform: perspective(2000px) rotateY(0);
+    -ms-transform: perspective(2000px) rotateY(0);
+    -o-transform: perspective(2000px) rotateY(0);
+    transform: perspective(2000px) rotateY(0);
+  }
+}
+@-webkit-keyframes cd-rotate-back {
+  0% {
+    -webkit-transform: perspective(2000px) rotateY(0);
+  }
+  70% {
+    /* this creates the bounce effect */
+    -webkit-transform: perspective(2000px) rotateY(-200deg);
+  }
+  100% {
+    -webkit-transform: perspective(2000px) rotateY(-180deg);
+  }
+}
+@-moz-keyframes cd-rotate-back {
+  0% {
+    -moz-transform: perspective(2000px) rotateY(0);
+  }
+  70% {
+    /* this creates the bounce effect */
+    -moz-transform: perspective(2000px) rotateY(-200deg);
+  }
+  100% {
+    -moz-transform: perspective(2000px) rotateY(-180deg);
+  }
+}
+@keyframes cd-rotate-back {
+  0% {
+    -webkit-transform: perspective(2000px) rotateY(0);
+    -moz-transform: perspective(2000px) rotateY(0);
+    -ms-transform: perspective(2000px) rotateY(0);
+    -o-transform: perspective(2000px) rotateY(0);
+    transform: perspective(2000px) rotateY(0);
+  }
+  70% {
+    /* this creates the bounce effect */
+    -webkit-transform: perspective(2000px) rotateY(-200deg);
+    -moz-transform: perspective(2000px) rotateY(-200deg);
+    -ms-transform: perspective(2000px) rotateY(-200deg);
+    -o-transform: perspective(2000px) rotateY(-200deg);
+    transform: perspective(2000px) rotateY(-200deg);
+  }
+  100% {
+    -webkit-transform: perspective(2000px) rotateY(-180deg);
+    -moz-transform: perspective(2000px) rotateY(-180deg);
+    -ms-transform: perspective(2000px) rotateY(-180deg);
+    -o-transform: perspective(2000px) rotateY(-180deg);
+    transform: perspective(2000px) rotateY(-180deg);
+  }
+}
+@-webkit-keyframes cd-rotate-inverse-back {
+  0% {
+    -webkit-transform: perspective(2000px) rotateY(180deg);
+  }
+  70% {
+    /* this creates the bounce effect */
+    -webkit-transform: perspective(2000px) rotateY(-20deg);
+  }
+  100% {
+    -webkit-transform: perspective(2000px) rotateY(0);
+  }
+}
+@-moz-keyframes cd-rotate-inverse-back {
+  0% {
+    -moz-transform: perspective(2000px) rotateY(180deg);
+  }
+  70% {
+    /* this creates the bounce effect */
+    -moz-transform: perspective(2000px) rotateY(-20deg);
+  }
+  100% {
+    -moz-transform: perspective(2000px) rotateY(0);
+  }
+}
+@keyframes cd-rotate-inverse-back {
+  0% {
+    -webkit-transform: perspective(2000px) rotateY(180deg);
+    -moz-transform: perspective(2000px) rotateY(180deg);
+    -ms-transform: perspective(2000px) rotateY(180deg);
+    -o-transform: perspective(2000px) rotateY(180deg);
+    transform: perspective(2000px) rotateY(180deg);
+  }
+  70% {
+    /* this creates the bounce effect */
+    -webkit-transform: perspective(2000px) rotateY(-20deg);
+    -moz-transform: perspective(2000px) rotateY(-20deg);
+    -ms-transform: perspective(2000px) rotateY(-20deg);
+    -o-transform: perspective(2000px) rotateY(-20deg);
+    transform: perspective(2000px) rotateY(-20deg);
+  }
+  100% {
+    -webkit-transform: perspective(2000px) rotateY(0);
+    -moz-transform: perspective(2000px) rotateY(0);
+    -ms-transform: perspective(2000px) rotateY(0);
+    -o-transform: perspective(2000px) rotateY(0);
+    transform: perspective(2000px) rotateY(0);
+  }
+}
+/*Pricing Style*/
+.pricing-box{
+    background-color: #fff;
+    padding: 0;
+   -webkit-box-shadow: 0px 50px 100px 0px rgba(60, 1, 4, 0.1), 0px -6px 0px 0px rgba(248, 99, 107, 0.004);
+    box-shadow: 0px 50px 100px 0px rgba(60, 1, 4, 0.1), 0px -6px 0px 0px rgba(248, 99, 107, 0.004);
+    border-radius: 5px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+.pricing-box.premium .pricing-head h3,
+.pricing-box.premium .pricing-list li,
+.pricing-box.premium .pricing-head span{
+    color: #fff;
+}
+.pricing-head{
+    background-color: #f7e4e7;
+    padding: 15px 0 0px;
+}
+.pricing-head i{
+    font-size: 22px;
+    margin-bottom: 20px;
+    display: inline;
+}
+.pricing-head h3{
+    font-size: 42px;
+    line-height: 42px;
+    margin: 0;
+    font-weight: 500;
+}
+.pricing-head h3 span{
+    font-family: "Work Sans",sans-serif;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 600;
+    display: block;
+    
+}
+.pricing-list{
+    margin: 20px 0;
+    text-align: left;
+}
+.pricing-list li{
+    line-height: 30px;
+    font-weight: 500;
+    font-family: "Poppins",sans-serif;
+    font-size: 12px;
+    letter-spacing: -0.2px;
+    padding: 0 0 0 10px;
+}
+.pricing-list li i{
+  color: #623694;
+  font-size: 10px;
+}
+.pricing-list li span{
+  font-size: 10px;
+}
+.pricing-footer{
+    padding-bottom: 30px;
+}
+.pricing-footer .default-btn{
+    border-radius: 30px;
+}
+.pricing-footer h4{
+    font-family: "Work Sans",sans-serif;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #623694;
+}
+/*price-tag
+=============*/
+.price-tag{
+    background-color: #623694;
+    padding: 10px 20px;
+    color: #fff;
+    font-family: "Work Sans",sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    position: absolute;
+    width: auto;
+    height: auto;
+    left: 0;
+    top: 133px;
+    transform: rotate(-90deg);
+    transform-origin: 0 0;
+    border-radius: 0px 0px 0px 10px;
+}
+/* 29-09-2021 */
+/* .pricing-wrap .content {
+  width: 100%;
+  margin: auto;
+}
+
+.pricing-wrap .content__title {
+  margin-bottom: 20px;
+  font-size: 18px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.pricing-wrap .content__inner {
+  width: 100%;
+  height: auto;
+  margin: auto;
+}
+
+.pricing-wrap .tabs {
+  position: relative;
+  height: 100%;
+}
+
+.pricing-wrap .tabs__nav {
+  position: relative;
+  width: 95%;
+  margin: auto;
+}
+
+.pricing-wrap .tabs__nav-decoration {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  transition: width 0.2s linear 0s, transform 0.2s ease-out 0s;
+  background-color: #623694;
+  border-radius: 3px;
+  z-index: 1;
+  border-radius: 25px;
+}
+
+.pricing-wrap .tabs__nav-list {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  list-style-type: none;
+  z-index: 5;
+  box-shadow: 0 0 8px 0 #eee;
+  border-radius: 25px; 
+}
+
+.pricing-wrap .tabs__nav-item {
+  transition-property: all;
+  transition-duration: 0.2s;
+  transition-timing-function: linear;
+  transition-delay: 0s;
+  padding: 8px 12px;
+  cursor: pointer;
+  width: 50%;
+  text-align: center;
+  border-radius: 25px;
+  font-size: 14px;
+}
+.pricing-wrap .tabs__nav-item.js-active {
+  transition-property: all;
+  transition-duration: 0.2s;
+  transition-timing-function: linear;
+  transition-delay: 0.05s;
+  color: #fff;
+}
+
+.pricing-wrap .tabs__panels {
+  position: relative;
+  margin-top: 30px;
+}
+
+.pricing-wrap .tabs__panel {
+  position: relative;
+  top: 0;
+  left: 0;
+  transition: none;
+  transform: scale(0.8);
+  width: 100%;
+  opacity: 0;
+  display: none;
+}
+.pricing-wrap .tabs__panel.js-active {
+  transition: all 0.25s linear 0s;
+  transform: scale(1);
+  opacity: 1;
+  display: block;
+}
+
+.pricing-wrap .tabs__panel-card {
+  display: flex;
+  margin-bottom: 30px;
+  padding: 15px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+}
+.pricing-wrap .tabs__panel-card:last-child {
+  margin-bottom: 0;
+}
+
+.pricing-wrap .tabs__panel-card--spaced-between {
+  justify-content: space-between;
+}
+
+.pricing-wrap .tabs__panel-avatar {
+  flex-shrink: 0;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+.pricing-wrap .tabs__panel-img {
+  flex-shrink: 0;
+  width: 80px;
+  height: 80px;
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+.pricing-wrap .tabs__panel-content {
+  width: 100%;
+  margin-left: 30px;
+}
+.pricing-wrap .tabs__panel-content:first-child {
+  margin-left: 0;
+}
+.pricing-wrap .tabs__panel-content:not(:last-child) {
+  margin-right: 30px;
+}
+.pricing-wrap .tabs__panel-content:before, .pricing-wrap .tabs__panel-content:after {
+  display: block;
+  width: 100%;
+  height: 20px;
+  content: "";
+  background-color: rgba(0, 0, 0, 0.15);
+}
+.pricing-wrap .tabs__panel-content:before {
+  margin-bottom: 15px;
+} */

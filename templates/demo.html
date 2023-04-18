@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<head>
+<marquee bgcolor="purple" scrollamount=15 ><h1>Welcome Geddi Kiran Kumar --Blog...!</h1></marquee>
+</head>
+
+<body>
+
+{% block content %}
+
+{% for i in post %}
+<img src='{{i.image.url}}' width="200" height="200"><br>
+Student Name: {{i.student_name}}<br>
+Roll No: {{i.roll_number}}<br>
+Telugu: {{i.telugu}}<br>
+English: {{i.english}}<br>
+Botany: {{i.botany}}<br>
+Zoology: {{i.zoology}}<br>
+Physics: {{i.physics}}<br>
+Chemistry: {{i.chemistry}}<br>
+Status: {{i.author}}<br>
+Time: {{i.timestamp}}
+<br>
+<br>
+
+
+{% endfor %}
+
+{% endblock content %}
+    <form>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+          
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+        </div>
+        <div class="form-group form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+          <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+
+
+</body>
+</html>
